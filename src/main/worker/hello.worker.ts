@@ -1,3 +1,3 @@
-export async function hello(subject: string): string {
+export async function hello(subject: string): Promise<string> {
     return `Hello, ${subject}!`;
 }
