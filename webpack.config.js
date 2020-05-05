@@ -1,11 +1,12 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
-// const WorkerPlugin = require('worker-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
-// const { GenerateSW } = require('workbox-webpack-plugin');
 const pkg = require('./package');
+
+// @TODO on production, service worker setup
+// const { GenerateSW } = require('workbox-webpack-plugin');
 
 const tsLoader = {
     loader: 'ts-loader',
@@ -63,7 +64,6 @@ module.exports = (env, argv) => ({
 
     plugins: [
         new CleanWebpackPlugin(),
-        // new WorkerPlugin(),
         new webpack.DefinePlugin({
             'process.env.VERSION': JSON.stringify(pkg.version),
         }),
