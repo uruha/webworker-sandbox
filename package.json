@@ -36,6 +36,9 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "comlink": "^4.3.0"
+    "comlink": "^4.3.0",
+    "remark": "^12.0.0",
+    "remark-highlight.js": "^6.0.0",
+    "remark-html": "^11.0.1"
   }
 }
