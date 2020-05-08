@@ -6,7 +6,7 @@ import { RemoteClass } from './worker/cls.worker';
 import './event.transfer';
 import * as api from './worker/event.worker';
 
-import { MarkdownParser } from './markdownParser';
+import { MarkdownParser } from './worker/markdownParser.worker';
 
 function callback(value: string) {
     console.log(`Result: ${value}`);
@@ -36,14 +36,15 @@ async function main() {
     const btn = document.querySelector('#worker-btn');
     btn && btn.addEventListener('click', api.onclick.bind(api));
 
+    // markdown parse
     const res = await fetch('https://raw.githubusercontent.com/uruha/webworker-sandbox/master/README.md');
     const raw = await res.text();
 
-    const markdownParser = new MarkdownParser();
+    const markdownParser = await new MarkdownParser();
     const htmlString = await markdownParser.parse(raw);
 
     const docs = document.getElementById('docs');
-    docs && (docs.innerHTML = htmlString);
+    docs && docs.insertAdjacentHTML('afterbegin', htmlString);
 }
 
 main();
